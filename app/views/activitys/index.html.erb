@@ -1,0 +1,75 @@
+<div class="container">
+<div class="banner">
+    <div class="row">
+        <div class="col-md-3 user-info">
+            <div class="card">
+                <div class="text-center">
+                <% if current_user.image.attached? %>
+                    <%= image_tag(current_user.image, :alt => "pic", :class => 'img-avatar') %>
+                <% else %>
+                    <%= image_tag('favicon.jpg', :alt => "pic", :class => 'img-avatar') %>
+                <% end %>
+                </div>
+                <hr>
+                <div class="card-body text-center">
+                <% if current_user.firstname and current_user.lastname %>
+                    <h4><strong><%= current_user.firstname%> <%= current_user.lastname%></strong></h4>
+                <% else %>
+                    <h4><%= current_user.email %></h4>
+                <% end %>
+                <hr>
+                <div class="row">
+                    <div class="col text-center">
+                        <h5 class="card-title"> <%= @activitys.count %> </h5>
+                        <h6 class="card-subtitle mb-2 text-muted">Activities</h6>
+                    </div>
+                </div>
+                </div>
+                <% if current_user.bio %>
+                <hr>
+                <div class="pl-3">
+                <h6><strong>About Me</strong></h6>
+                <p><%= current_user.bio %></p>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-9">
+        <h3><strong>Activity Feed</strong></h3>
+        <div class="table-responsive">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Activity</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Duration(mins)</th>
+                    <th scope="col">Date</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            <% if @activitys.count == 0 %>
+            <tr>
+                <td><p class="text-danger">No activity found!</p></td>
+            </tr>
+            <% end %>
+            
+            <% @activitys.each do |activity| %>
+                <tr>
+                    <td class="activity-title"><%= link_to activity.title, activity_path(activity) %></td>
+                    <td><%= truncate(activity.description) %></td>
+                    <td><%= activity.duration %></td>
+                    <td><%= activity.date %></td>
+                    <td><%= link_to "Read more", activity_path(activity), :class => 'btn btn-info float-md-right' %></td>
+                </tr>
+            <% end %>
+            </tbody>
+        </table>
+        </div>
+        </div>
+        
+    </div>
+</div>
+</div>
+<%= render 'layouts/footer'%>

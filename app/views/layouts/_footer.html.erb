@@ -1,0 +1,52 @@
+<footer>
+    <div class="footer-banner">
+        <div class="row justify-content-between">
+            <div class="col-sm-12 col-md-4">
+                <div class="footer-section">
+                    <h5>ABOUT</h5>
+                    <div class="about-text">
+                    Move and Groove is a fitness tracker web app <br>
+                    that allows users to sign up and log their<br>
+                    fitness activities of different kinds.
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="footer-section">
+                <h5>QUICK LINKS</h5>
+                <div class="footer-link">
+                <% if user_signed_in? %>
+                    <%= link_to 'Dashboard', user_root_path %>
+                    <%= link_to 'Create Activity', new_activity_path %>
+                    <%= link_to 'Edit Profile', edit_user_registration_path %>
+                    <%= link_to 'Sign Out', destroy_user_session_path, method: :delete %>
+                <% else %>
+                    <a href="/">Home</a>
+                    <%= link_to 'Sign Up', new_user_registration_path %>
+                    <%= link_to 'Sign In', new_user_session_path %>
+                <% end %>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4">
+                <div class="footer-section mb-4">
+                <h5>FOLLOW US</h5>
+                    <div class="social-links">
+                        <a href="https://www.twitter.com" target="_blank"><%= fa_icon "twitter" %></a>
+                        <a href="https://www.facebook.com" target="_blank"><%= fa_icon "facebook" %></a>
+                        <a href="https://www.instagram.com" target="_blank"><%= fa_icon "instagram" %></a>
+                        <a href="https://www.youtube.com" target="_blank"><%= fa_icon "youtube" %></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12 text-center text-muted ft-author">
+                <p>&copy; 2020 Move and Groove. All rights reserved | Developed with <span class="text-danger">♥</span> by <a href="https://chineduemesue.netlify.app" target="_blank">Chinedu Emesue</a></p>
+            </div>
+        </div>
+    </div> 
+</footer>
