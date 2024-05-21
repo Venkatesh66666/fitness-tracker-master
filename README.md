@@ -22,7 +22,7 @@ Ruby on Rails, Devise
 Clone repo to your local machine:
 
 ```git
-git clone https://github.com/its-nedum/fitness-tracker.git
+git clone https://github.com/Venkatesh66666/fitness-tracker-master.git
 ```
 
 ### Install dependencies and run locally
